@@ -20,7 +20,6 @@ function App() {
   return (
     <>
       {init ? <AppRouter isLoggedIn={isLoggedIn} userObj={userObj}/> : "Initializing..."}
-      <footer>&copy; NWitter {new Date().getFullYear()}</footer>
     </>
   );
 }
