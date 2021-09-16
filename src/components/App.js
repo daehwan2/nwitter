@@ -10,23 +10,37 @@ function App() {
     authService.onAuthStateChanged((user)=>{
       if(user){
         setIsLoggedIn(true);
-        setUserObj({
-          displayName:user.displayName,
-          uid:user.uid
-        });
+        if(!user.displayName){
+          setUserObj({
+            displayName:"이름없음",
+            uid:user.uid
+          });
+        }else{
+          setUserObj({
+            displayName:user.displayName,
+            uid:user.uid
+          });
+        }
       }else{
         setIsLoggedIn(false);
+        setUserObj(null);
       }
       setInit(true);
     })
   }, []);
   const refreshUser=()=>{
     const user = authService.currentUser;
-    setUserObj({
-      displayName:user.displayName,
-      uid:user.uid,
-      updateProfile: (args)=>user.updateProfile(args),
-    });
+    if(!user.displayName){
+      setUserObj({
+        displayName:"이름없음",
+        uid:user.uid
+      });
+    }else{
+      setUserObj({
+        displayName:user.displayName,
+        uid:user.uid
+      });
+    }
   }
   return (
     <>

@@ -1,3 +1,5 @@
+import { faFileImage } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { dbService, storageService } from 'fbase';
 import { addDoc, collection } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadString } from 'firebase/storage';
@@ -20,6 +22,7 @@ const NweetFactory = ({userObj}) =>{
                 text:nweet,
                 createdAt:Date.now(),
                 creatorId:userObj.uid,
+                creatorName:userObj.displayName,
                 attachmentUrl
             }
             const docRef = await addDoc(collection(dbService, "nweets"),nweetObj);
@@ -47,10 +50,18 @@ const NweetFactory = ({userObj}) =>{
         reader.readAsDataURL(theFile);
     }
     return (
-        <form onSubmit={onSubmit}>
-                <input value={nweet} onChange={onChange} type="text" placeholder="What's on your mind?" maxLength={120} />
-                <input type="file" accept="image/*" onChange={onFileChange}/>
-                <input type="submit" value="Nweet"/>
+        <form className="nweetForm" onSubmit={onSubmit}>
+            <div className="textAndSubmit">
+                <input className="nweetInput" value={nweet} onChange={onChange} type="text" placeholder="What's on your mind?" maxLength={120} />
+                <div class="filebox">
+                    <label for="ex_file"><FontAwesomeIcon icon={faFileImage}/></label>
+                    <input type="file" id="ex_file" accept="image/*" onChange={onFileChange}/>
+                </div>
+                <input className="nweetSubmit" type="submit" value="NWEET"/>
+            </div>
+                {/* <input type="file" accept="image/*" /> */}
+                
+
                 {attachment && 
                     <div>
                         <img src={attachment} width="50px" height="50px"/>

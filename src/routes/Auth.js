@@ -2,6 +2,10 @@ import { authService } from 'fbase';
 import React, { useState } from 'react';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, GithubAuthProvider,signInWithPopup } from 'firebase/auth';
 import AuthForm from 'components/AuthForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import {faDove} from '@fortawesome/free-solid-svg-icons';
+import {faGoogle,faGithub} from "@fortawesome/free-brands-svg-icons";
 const Auth = () => {
     
     
@@ -16,16 +20,20 @@ const Auth = () => {
         }else if(name ==="github"){
             provider = new GithubAuthProvider();
         }
-        const data = await signInWithPopup(authService,provider);
-        console.log(data);
+        await signInWithPopup(authService,provider);
     }
     return (
-        <div>
+        <div className="authContainer">
+            <FontAwesomeIcon className="faDove" icon={faDove}/>
             <AuthForm/>
 
             <div>
-                <button onClick={onSocialClick} name="google">Continue with Google</button>
-                <button onClick={onSocialClick} name="github">Continue with Github</button>
+                <button className="faGoogleBtn" onClick={onSocialClick} name="google">
+                    <FontAwesomeIcon className="faGoogle" icon={faGoogle}/>
+                </button>
+                <button className="faGithubBtn" onClick={onSocialClick} name="github">
+                    <FontAwesomeIcon className="faGithub" icon={faGithub}/>
+                </button>
             </div>
         </div>
     );

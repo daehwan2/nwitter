@@ -1,0 +1,203 @@
+html, body, #root{
+    background-color:#FEFBF3;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+.authContainer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.loginForm .idStyle{
+    width: 200px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.loginForm .passStyle{
+    width: 200px;    
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.loginForm .buttonStyle{
+    width: 200px;    
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #79B4B7;
+    border-radius: 10%;
+    border: 0px;
+    box-shadow: 2px 2px 2px 2px gray;
+}
+.smallButton{
+    width: 150px;
+    text-align:center;
+    background-color: #F8F0DF;
+    box-shadow: 2px 2px 2px 2px gray;
+    margin-bottom: 20px;
+}
+.faDove{
+    font-size: 80px;
+    color: #6930C3;
+    margin-bottom: 40px;
+}
+.faGoogleBtn,
+.faGithubBtn{
+    margin: 0 20px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    width: 80px;
+    
+    box-shadow: 2px 2px 2px 2px gray;
+}
+.faGoogle,
+.faGithub{
+    font-size: 25px;
+}
+.navList{
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.navList .faDove{
+    margin: auto;
+    margin-right: 30px;
+    width: 40px;
+    height: 40px;
+}
+.navList li:nth-child(2){
+    font-size: 20px;
+}
+.bold{
+    font-weight: bold;
+}
+
+.nweetForm{
+    margin: auto;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    background-color: #9D9D9D;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.nweetForm .nweetInput{
+    width: 200px;
+    margin: 10px 5px;
+    font-size: 15px;
+
+}
+.nweetForm .textAndSubmit{
+    display: flex;
+}
+
+.nweetForm .nweetSubmit{
+    background-color: #6930C3;
+    color: white;
+    border-radius: 30%;
+    margin-left: 5px;
+    
+    cursor: pointer;
+}
+
+.nweets{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.filebox label{
+    font-size: 40px;
+    cursor: pointer;
+}
+.filebox input[type="file"] { 
+    /* 파일 필드 숨기기 */ 
+    position: absolute; 
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip:rect(0,0,0,0); 
+    border: 0;
+}
+
+.tweetContainer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.tweetProfile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 5px;
+    background-color: #CDF0EA;
+    height: 100%;
+}
+.nweet{
+    background-color: #C8C6C6;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+}
+.nweet .image{
+    margin: 0px auto;
+}
+.nweet .deleteAndEdit{
+    align-self: flex-end;
+    display: flex;
+    align-items: flex-end;
+}
+.createdAt{
+    font-size: 10px;
+}
+.img{
+    width: 50px;
+    height: 50px;
+    background-color: black;
+}
+.editForm{
+    display: flex;
+}
+.editForm input:nth-child(2){
+    background-color: #6930C3;
+    color: white;
+    border-radius: 30%;
+    margin-left: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.editCancel{
+    font-size: 30px;
+}
+.editNameForm{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+.editProfileContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.home{
+    margin-bottom: 10px;
+}

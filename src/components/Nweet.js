@@ -1,9 +1,10 @@
-import { dbService,storageService } from 'fbase';
+import { authService, dbService,storageService } from 'fbase';
 import React, { useState } from 'react';
 import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import {deleteObject, ref} from 'firebase/storage';
-
-const Nweet = ({nweetObj,isOwner})=>{
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrashAlt, faWindowClose } from '@fortawesome/free-solid-svg-icons';
+const Nweet = ({userObj,nweetObj,isOwner})=>{
     const [editing,setEditing]=useState(false);
     const [newNweet,setNewNweet]=useState(nweetObj.text);
     const onDeleteClick = async ()=>{
@@ -30,22 +31,34 @@ const Nweet = ({nweetObj,isOwner})=>{
         <div>
             {
                 editing ? 
-                <>
-                <form onSubmit={onSubmit}>
-                    <input onChange={onChange} type="text" placeholder="Edit your nweet" value={newNweet} required/>
-                    <input type="submit" value="Update Tweet"/>
-                </form>
-                <button onClick={toggleEditing}>Cancel</button> 
-                </> :
-                <>
-                <h4>{nweetObj.text}</h4>
-                {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} width="50px" height="50px" />}
-                {isOwner &&
-                <>
-                    <button onClick={onDeleteClick}>Delete Nweet</button>
-                    <button onClick={toggleEditing}>Edit Nweet</button>
-                </>}
-                </>
+                <div className="tweetContainer">
+                    <div className="tweetProfile">
+                        <div className="bold userName">{nweetObj.creatorName}</div>
+                    </div>
+                    <form className="editForm" onSubmit={onSubmit}>
+                        <input onChange={onChange} type="text" placeholder="Edit your nweet" value={newNweet} required/>
+                        <input type="submit" value="Update"/>
+                    </form>
+                    <FontAwesomeIcon className="editCancel" onClick={toggleEditing} icon={faWindowClose}/> 
+                </div> :
+                <div className="tweetContainer">
+                    <div className="tweetProfile">
+                        <div className="bold userName">{nweetObj.creatorName}</div>
+                        
+                    </div>
+                    <div className="nweet">
+
+                        {nweetObj.attachmentUrl && <img className="image" src={nweetObj.attachmentUrl} width="50px" height="50px" />}
+                        <h4>{nweetObj.text}</h4>                
+                        {isOwner ?
+                        <div className="deleteAndEdit">
+                            <div className="createdAt">{Date(nweetObj.createdAt)}</div>
+                            <button onClick={toggleEditing}><FontAwesomeIcon icon={faEdit}/></button>
+                            <button onClick={onDeleteClick}><FontAwesomeIcon icon={faTrashAlt}/></button>
+                        </div>:
+                        <div className="createdAt">{Date(nweetObj.createdAt)}</div>}
+                    </div>
+                </div>
             }
             
         </div>
